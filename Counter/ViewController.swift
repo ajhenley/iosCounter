@@ -22,7 +22,13 @@ class ViewController: UIViewController {
 
     @IBAction func nextNumber(_ sender: Any) {
         var mess:String = ""
-        currentNumber += 1
+        if currentNumber < 100 {
+            currentNumber += 1
+            
+            var currpos = justNumberLabel.center
+            currpos = CGPoint(x: currpos.x, y: currpos.y - 6)
+            justNumberLabel.center = currpos
+        }
         if currentNumber % 3 == 0 && currentNumber % 5 == 0 {
             mess = "FizzBuzz"
         } else if currentNumber % 3 == 0 {
@@ -34,6 +40,8 @@ class ViewController: UIViewController {
         }
         myLabel.text = mess
         justNumberLabel.text = String(currentNumber)
+        
+
     }
     
     override func didReceiveMemoryWarning() {
